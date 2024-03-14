@@ -1,0 +1,228 @@
+:root {
+  --Full-Slider-Bar: hsl(174, 77%, 80%);
+  --Slider-Backround: hsl(174, 86%, 45%);
+  --Discount-Background: hsl(14, 92%, 95%);
+  --Discount-Text: hsl(15, 100%, 70%);
+  --CTA-Text: hsl(226, 100%, 87%);
+  --Pricing-Component-Background: hsl (0, 0%, 100%);
+  --Main-Background: hsl(230, 100%, 99%);
+  --Empty-Slider-Bar: hsl(224, 65%, 95%);
+  --Toggle-Background: hsl(223, 50%, 87%);
+  --Text: hsl(225, 20%, 60%);
+  --Text-CTA-Background: hsl(227, 35%, 25%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(./images/bg-pattern.svg);
+  background-size: cover;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: var(--Main-Background);
+  margin: 0;
+  padding: 40px;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.circles {
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  z-index: -5;
+}
+
+.header {
+  color: var(--Text-CTA-Background);
+  font-weight: 800;
+}
+
+.description {
+  color: var(--Text);
+}
+
+.card {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 60px;
+  max-width: 800px;
+}
+
+.pageviews {
+  color: var(--Text);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.slider-div {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  height: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.full-slider {
+  background-color: var(--Full-Slider-Bar);
+  width: 60%;
+  height: 10px;
+  border-radius: 20px;
+}
+
+.empty-slider {
+  background-color: var(--Empty-Slider-Bar);
+  width: 40%;
+  height: 10px;
+  border-radius: 20px;
+}
+
+.slider-circle {
+  background-color: var(--Slider-Backround);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  cursor: pointer;
+  box-shadow: 0px 10px 40px 3px var(--Slider-Backround);
+}
+
+.price {
+  color: var(--Text-CTA-Background);
+  font-weight: 800;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.month-year {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--Text);
+  margin-left: 20px;
+}
+
+.selection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--Text);
+}
+
+.select-btn {
+  width: 60px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: var(--Toggle-Background);
+  margin: 0 20px;
+  padding: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+}
+
+.select-btn:hover {
+  background-color: var(--Full-Slider-Bar);
+}
+
+.select-circle {
+  background-color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.discount {
+  margin-left: 10px;
+  color: var(--Discount-Text);
+  background-color: var(--Discount-Background);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.line {
+  border-bottom: 1px solid var(--Toggle-Background);
+  width: 100%;
+  margin: 30px auto;
+}
+
+ul {
+  margin-top: 40px;
+}
+
+li {
+  color: var(--Text);
+  margin-bottom: 20px;
+  list-style: none;
+
+  svg {
+    margin-right: 20px;
+  }
+}
+
+button {
+  margin-top: 30px;
+  width: 300px;
+  height: 50px;
+  background-color: var(--Text-CTA-Background);
+  border-radius: 30px;
+  color: var(--CTA-Text);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .list-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .description-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.attribution {
+  text-align: center;
+  color: var(--Text);
+  margin-top: 80px;
+  margin-bottom: 0;
+
+  a {
+    color: var(--Text);
+  }
+}
