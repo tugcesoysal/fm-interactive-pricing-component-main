@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const selectBtn = document.querySelector(".select-btn");
   const selectCircle = document.querySelector(".select-circle");
+  const monthYear = document.querySelector(".month-year");
 
   let monthly = true;
 
@@ -10,8 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     monthly = !monthly;
     if (monthly) {
       selectCircle.style.transform = "translateX(0)";
+      monthYear.innerHTML = "/month";
+      updatePrice();
     } else {
       selectCircle.style.transform = "translateX(100%)";
+      monthYear.innerHTML = "/year";
+      updatePrice();
     }
   });
 
@@ -29,73 +34,97 @@ document.addEventListener("DOMContentLoaded", function () {
   updateDiscountText();
   window.addEventListener("resize", () => {
     updateDiscountText();
-    updateSliderPosition();
   });
 
   // Slider
+  const slider = document.querySelector(".slider");
 
-  const sliderDiv = document.querySelector(".slider-div");
-  const sliderCircle = document.querySelector(".slider-circle");
-  const fullSlider = document.querySelector(".full-slider");
-  const emptySlider = document.querySelector(".empty-slider");
+  function updateSliderBackground() {
+    const value = slider.value;
+    const percent = ((value - slider.min) / (slider.max - slider.min)) * 100;
+    slider.style.background = `linear-gradient(to right, var(--Full-Slider-Bar) 0%, var(--Full-Slider-Bar) ${percent}%, var(--Empty-Slider-Bar) ${percent}%, var(--Empty-Slider-Bar) 100%)`;
+  }
 
-  let isDragging = false;
+  // Slider and Price
 
-  sliderCircle.addEventListener("mousedown", (event) => {
-    isDragging = true;
-
-    const offsetX = event.clientX - sliderCircle.getBoundingClientRect().left;
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-
-    function handleMouseMove(event) {
-      if (isDragging) {
-        sliderCircle.style.backgroundColor = "hsl(174, 86%, 33%)";
-
-        const newPosition =
-          event.clientX - sliderDiv.getBoundingClientRect().left - offsetX;
-        const sliderWidth = sliderDiv.offsetWidth;
-
-        const minPosition = 0;
-        const maxPosition = sliderWidth - sliderCircle.offsetWidth;
-        const boundedPosition = Math.min(
-          Math.max(newPosition, minPosition),
-          maxPosition,
-        );
-
-        const percentagePosition = (boundedPosition / sliderWidth) * 100;
-
-        sliderCircle.style.left = percentagePosition + "%";
-        fullSlider.style.width = percentagePosition + "%";
-        emptySlider.style.width = 100 - percentagePosition + "%";
+  function updatePrice() {
+    console.log("Updating price...");
+    const pageviews = document.querySelector(".pageviews");
+    const price = document.querySelector(".price");
+    const value = parseInt(slider.value);
+    console.log("Slider value:", value);
+    if (monthly) {
+      switch (value) {
+        case 1: {
+          pageviews.innerHTML = "10K PAGEVIEWS";
+          price.innerHTML = "$8.00";
+          break;
+        }
+        case 26: {
+          pageviews.innerHTML = "50K PAGEVIEWS";
+          price.innerHTML = "$12.00";
+          break;
+        }
+        case 51: {
+          pageviews.innerHTML = "100K PAGEVIEWS";
+          price.innerHTML = "$16.00";
+          break;
+        }
+        case 76: {
+          pageviews.innerHTML = "500K PAGEVIEWS";
+          price.innerHTML = "$24.00";
+          break;
+        }
+        case 101: {
+          pageviews.innerHTML = "1M PAGEVIEWS";
+          price.innerHTML = "$36.00";
+          break;
+        }
+        default: {
+          pageviews.innerHTML = "100K PAGEVIEWS";
+          price.innerHTML = "$16.00";
+        }
       }
-    }
-
-    function handleMouseUp() {
-      sliderCircle.style.backgroundColor = "hsl(174, 86%, 45%)";
-
-      isDragging = false;
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    }
-  });
-
-  function updateSliderPosition() {
-    const sliderWidth = sliderDiv.offsetWidth;
-    const circleLeftPercentage = parseFloat(
-      sliderCircle.style.left.replace("%", ""),
-    );
-
-    if (!isNaN(circleLeftPercentage)) {
-      const fullSliderWidthPercentage = circleLeftPercentage;
-
-      fullSlider.style.width = fullSliderWidthPercentage + "%";
-      emptySlider.style.width = 100 - fullSliderWidthPercentage + "%";
+    } else {
+      switch (value) {
+        case 1: {
+          pageviews.innerHTML = "10K PAGEVIEWS";
+          price.innerHTML = "$6.00";
+          break;
+        }
+        case 26: {
+          pageviews.innerHTML = "50K PAGEVIEWS";
+          price.innerHTML = "$9.00";
+          break;
+        }
+        case 51: {
+          pageviews.innerHTML = "100K PAGEVIEWS";
+          price.innerHTML = "$12.00";
+          break;
+        }
+        case 76: {
+          pageviews.innerHTML = "500K PAGEVIEWS";
+          price.innerHTML = "$18.00";
+          break;
+        }
+        case 101: {
+          pageviews.innerHTML = "1M PAGEVIEWS";
+          price.innerHTML = "$25.00";
+          break;
+        }
+        default: {
+          pageviews.innerHTML = "100K PAGEVIEWS";
+          price.innerHTML = "$12.00";
+        }
+      }
     }
   }
 
-  window.addEventListener("resize", updateSliderPosition);
+  updateSliderBackground();
+  updatePrice();
 
-  updateSliderPosition();
+  slider.addEventListener("input", () => {
+    updateSliderBackground();
+    updatePrice();
+  });
 });
