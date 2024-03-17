@@ -127,4 +127,26 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSliderBackground();
     updatePrice();
   });
+
+  // Desktop reorder
+
+  function reorder() {
+    const pageviewsDiv = document.querySelector(".pageviews-div");
+    const priceDiv = document.querySelector(".price-div");
+    const selection = document.querySelector(".selection");
+    if (window.innerWidth > 600) {
+      pageviewsDiv.append(priceDiv);
+      pageviewsDiv.style.justifyContent = "space-between";
+      priceDiv.style.margin = "16px";
+    } else {
+      selection.before(priceDiv);
+      pageviewsDiv.style.justifyContent = "center";
+      priceDiv.style.margin = "0";
+    }
+  }
+
+  reorder();
+  window.addEventListener("resize", () => {
+    reorder();
+  });
 });
