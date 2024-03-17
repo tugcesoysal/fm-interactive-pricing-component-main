@@ -55,9 +55,9 @@ body {
   width: 100%;
   background-color: white;
   border-radius: 10px;
-  padding: 30px;
+  padding: 20px 40px;
   margin-top: 60px;
-  max-width: 800px;
+  max-width: 700px;
 }
 
 .pageviews {
@@ -113,6 +113,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
 .price {
@@ -123,6 +125,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin: 0;
 }
 
 .month-year {
@@ -176,17 +179,27 @@ body {
 .line {
   border-bottom: 1px solid var(--Toggle-Background);
   width: 100%;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 
 ul {
-  margin-top: 40px;
+  margin-top: 20px;
+  text-align: center;
+
+  @media (min-width: 600px) {
+    text-align: left;
+  }
 }
 
 li {
   color: var(--Text);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   list-style: none;
+  margin-left: -80px;
+
+  @media (min-width: 600px) {
+    margin-left: 20px;
+  }
 
   svg {
     margin-right: 20px;
@@ -194,7 +207,7 @@ li {
 }
 
 button {
-  margin-top: 30px;
+  margin-top: 20px;
   width: 300px;
   height: 50px;
   background-color: var(--Text-CTA-Background);
