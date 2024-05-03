@@ -24,7 +24,7 @@ body {
   background-repeat: no-repeat;
   background-color: var(--Main-Background);
   margin: 0;
-  padding: 40px;
+  padding: 2em;
   font-family: "Manrope", sans-serif;
   font-size: 15px;
   font-weight: 600;
@@ -33,6 +33,10 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 400px) {
+    font-size: 10px;
+  }
 }
 
 .circles {
@@ -55,7 +59,7 @@ body {
   width: 100%;
   background-color: white;
   border-radius: 10px;
-  padding: 20px 40px;
+  padding: 2em;
   margin-top: 60px;
   max-width: 700px;
 }
@@ -69,7 +73,7 @@ body {
 
 .pageviews {
   color: var(--Text);
-  font-size: 1rem;
+  font-size: 1em;
   letter-spacing: 2px;
   font-weight: 800;
 }
@@ -127,7 +131,7 @@ body {
 .price {
   color: var(--Text-CTA-Background);
   font-weight: 800;
-  font-size: 3rem;
+  font-size: 3em;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -136,7 +140,7 @@ body {
 }
 
 .month-year {
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 600;
   color: var(--Text);
   margin-left: 20px;
@@ -156,13 +160,18 @@ body {
   height: 30px;
   border-radius: 20px;
   background-color: var(--Toggle-Background);
-  margin: 0 20px;
+  margin: 0 1em;
   padding: 5px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: start;
   cursor: pointer;
+
+  @media (max-width: 400px) {
+    height: 2.5em;
+    width: 50px;
+  }
 }
 
 .select-btn:hover {
@@ -174,6 +183,11 @@ body {
   width: 25px;
   height: 25px;
   border-radius: 50%;
+
+  @media (max-width: 400px) {
+    height: 2em;
+    width: 2em;
+  }
 }
 
 .discount {
@@ -216,13 +230,14 @@ li {
 
 button {
   margin-top: 20px;
-  width: 300px;
+  max-width: 300px;
+  width: 90%;
   height: 50px;
   background-color: var(--Text-CTA-Background);
   border-radius: 30px;
   color: var(--CTA-Text);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1em;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
