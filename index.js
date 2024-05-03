@@ -48,11 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Slider and Price
 
   function updatePrice() {
-    console.log("Updating price...");
     const pageviews = document.querySelector(".pageviews");
     const price = document.querySelector(".price");
     const value = parseInt(slider.value);
-    console.log("Slider value:", value);
     if (monthly) {
       switch (value) {
         case 1: {
